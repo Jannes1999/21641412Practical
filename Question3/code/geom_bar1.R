@@ -1,4 +1,4 @@
-geom_bar1 <- function(alpha,fig.width=6, fig.height=4){
+geom_bar1 <- function(alpha,fig.width=6, fig.height){
     library(tidyverse)
     library(stringr)
 

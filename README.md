@@ -83,7 +83,7 @@ metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
 
 ``` r
 list.files('Question3/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
-f <- geom_bar1(alpha = 0.7, fig.width=6, fig.height=4)
+f <- geom_bar1(alpha = 0.7, fig.width=6, fig.height= 20)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-5-1.png) The
@@ -95,9 +95,65 @@ following is found here
 Loc3 <- "Question4/data/netflix/"
 credit<- read_csv(glue::glue("{Loc3}credits.csv"))
 titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+
+list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+m <- Movie_vs_series(alpha = 0.7)
+m
 ```
 
 This is why the following
+
+``` r
+Loc3 <- "Question4/data/netflix/"
+credit<- read_csv(glue::glue("{Loc3}credits.csv"))
+```
+
+    ## Rows: 77213 Columns: 5
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): id, name, character, role
+    ## dbl (1): person_id
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+```
+
+    ## Rows: 5806 Columns: 15
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (8): id, title, type, description, age_certification, genres, production...
+    ## dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+m2 <- table_of_extremes()
+m2
+```
+
+    ##                Movies   Show    
+    ## Above 7 rating 23.25086 49.53591
+    ## Below 5 rating 10.18888 0
+
+To extrapolate further on the possible benefit of focusing on shows as
+oppose to movies is displayed in the table above. Filtering the
+dataframe into only movies and shows respectively allows one to get the
+percewntage of movies above a rating of 7 and below a rating of 5 (the
+same for shows). This illustrates that shows exhibit an imdb rating of
+higher than 7 almost 50% of the time. Furthermore, there are no show
+with a rating under 5. Movies are typically more hit and miss.
+
+Future analysis to be done could be to weigh how this obvious pro for
+Shows relates to costs for producing shows vs movies (given shows are
+longer one would expect a bigger budget required). This insight could
+ultimately decide what to put more focus on.
 
 # Question 5
 
@@ -151,7 +207,7 @@ list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .
 g <- profitability(alpha = 0.7)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) Here I
+![](README_files/figure-markdown_github/unnamed-chunk-9-1.png) Here I
 made use of the geom_col function to look at the most profitable
 categories of apps.
 
