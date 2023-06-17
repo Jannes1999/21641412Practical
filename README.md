@@ -1,24 +1,75 @@
-# Purpose
-
-Purpose of this work folder.
-
-Ideally store a minimum working example data set in data folder.
-
-Add binary files in bin, and closed R functions in code. Human Readable
-settings files (e.g. csv) should be placed in settings/
-
 ``` r
 rm(list = ls()) # Clean your environment:
 gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
-```
-
-    ##          used (Mb) gc trigger (Mb) limit (Mb) max used (Mb)
-    ## Ncells 517328 27.7    1149341 61.4         NA   657477 35.2
-    ## Vcells 914407  7.0    8388608 64.0      16384  1802933 13.8
-
-``` r
 library(tidyverse)
 ```
+
+# Question 1
+
+crfr
+
+# Question 2
+
+``` r
+if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+
+
+Loc1 <- "Question2/data/London/"
+London <- read_csv(glue::glue("{Loc1}london_weather.csv"))
+UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")
+list.files('Question2/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+```
+
+er4f f4ff4
+
+# Question 3
+
+``` r
+if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+
+
+Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
+Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
+Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
+metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+```
+
+here is the barplot
+
+The following is found here
+
+# Question 4
+
+``` r
+Loc3 <- "Question4/data/netflix/"
+credit<- read_csv(glue::glue("{Loc3}credits.csv"))
+titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+```
+
+This is why the following
+
+# Question 5
+
+``` r
+if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+
+
+Loc4 <- "Question5/data/googleplay/"
+User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
+google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
+```
+
+First I made use of Geom_col in order to extract the most profitable
+apps from different categories
+
+``` r
+if(!require("tidyverse")) install.packages("tidyverse")
+```
+
+    ## Loading required package: tidyverse
 
     ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 
@@ -32,17 +83,46 @@ library(tidyverse)
     ## ✖ dplyr::lag()    masks stats::lag()
 
 ``` r
-list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+library(tidyverse)
+
+
+Loc4 <- "Question5/data/googleplay/"
+User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
 ```
 
-# Question 1
+    ## Rows: 64295 Columns: 5
 
-    ## Rows: 194260 Columns: 67
     ## ── Column specification ────────────────────────────────────────────────────────
     ## Delimiter: ","
-    ## chr   (4): iso_code, continent, location, tests_units
-    ## dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
-    ## date  (1): date
+    ## chr (3): App, Translated_Review, Sentiment
+    ## dbl (2): Sentiment_Polarity, Sentiment_Subjectivity
     ## 
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
+```
+
+    ## Rows: 10054 Columns: 13
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (11): App, Category, Size, Installs, Type, Price, Content Rating, Genres...
+    ## dbl  (2): Rating, Reviews
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+g <- profitability(alpha = 0.7)
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+``` r
+g
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-8-2.png)

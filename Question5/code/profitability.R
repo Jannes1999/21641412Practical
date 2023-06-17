@@ -1,4 +1,4 @@
-profitability <- function(alpha, Fig.widht, Fig.height){
+profitability <- function(alpha){
 
      profitability1 <- google_playstore %>%
          mutate(Price = gsub("\\$", " ", Price)) %>%
@@ -17,7 +17,7 @@ profitability <- function(alpha, Fig.widht, Fig.height){
 
    print(plot_profitability)
 }
-profitability()
+
 
 
 

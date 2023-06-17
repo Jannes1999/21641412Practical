@@ -33,8 +33,9 @@ Loc3 <- "data/netflix/"
 credit<- read_csv(glue::glue("{Loc3}credits.csv"))
 titles <- read_csv(glue::glue("{Loc3}titles.csv"))
 ```
+# Question 4 
 
-
+According to the great minds found on the internet in today's world any movie or series is worth watching with a imdb rating above 7 and certainly not worth watching if the imdb rating is below 5. 
 
 
 
