@@ -6,6 +6,18 @@ library(tidyverse)
 
 # Question 1
 
+``` r
+if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+
+
+Loc <- "Question1/data/Covid/"
+Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
+list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+l <- line_bar(alpha = 0.8, size = 1)
+```
+
 With regards to see differing trends between Africa and other countries
 
 # Question 2

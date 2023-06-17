@@ -14,7 +14,7 @@ library(tidyverse)
 
 # Question 1
 
-```{r, echo=FALSE, eval=F}
+```{r, eval=F}
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
