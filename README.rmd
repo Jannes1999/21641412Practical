@@ -42,6 +42,8 @@ Loc1 <- "Question2/data/London/"
 London <- read_csv(glue::glue("{Loc1}london_weather.csv"))
 UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")
 list.files('Question2/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+
 ```
 er4f
 f4ff4
@@ -58,6 +60,9 @@ Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
 Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
 Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
 metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+
+f <- geom_bar1(alpha = 0.7)
+
 
 ```
 

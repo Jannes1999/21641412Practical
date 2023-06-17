@@ -47,6 +47,8 @@ Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
 Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
 Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
 metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+
+f <- geom_bar1(alpha = 0.7)
 ```
 
 here is the barplot
