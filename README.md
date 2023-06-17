@@ -1,16 +1,8 @@
-``` r
-rm(list = ls()) # Clean your environment:
-gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
-library(tidyverse)
-```
-
 # Question 1
 
 ``` r
-if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
 ```
-
-    ## Loading required package: tidyverse
 
     ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 
@@ -24,9 +16,6 @@ if(!require("tidyverse")) install.packages("tidyverse")
     ## ✖ dplyr::lag()    masks stats::lag()
 
 ``` r
-library(tidyverse)
-
-
 Loc <- "Question1/data/Covid/"
 suppressMessages({Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))})
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
@@ -54,24 +43,10 @@ l <- line_bar(alpha = 0.8, size = 1,fig.width=6, fig.height=4)
 With regards to see differing trends between Africa and other countries
 
 ``` r
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 Loc <- "Question1/data/Covid/"
-Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
-```
-
-    ## Rows: 194260 Columns: 67
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr   (4): iso_code, continent, location, tests_units
-    ## dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
-    ## date  (1): date
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
+suppressMessages({Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))})
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 ```
 
@@ -112,20 +87,7 @@ if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 Loc <- "Question1/data/Covid/"
-Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
-```
-
-    ## Rows: 194260 Columns: 67
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr   (4): iso_code, continent, location, tests_units
-    ## dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
-    ## date  (1): date
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
+suppressMessages({Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))})
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 ```
 
@@ -167,184 +129,83 @@ reason for the graph above.
 # Question 2
 
 ``` r
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc1 <- "Question2/data/London/"
-London <- read_csv(glue::glue("{Loc1}london_weather.csv"))
-```
-
-    ## Rows: 15341 Columns: 10
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## dbl (10): date, cloud_cover, sunshine, global_radiation, max_temp, mean_temp...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
-UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")
-```
-
-    ## Rows: 1707 Columns: 34
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (17): STATION, DATE, NAME, CDSD_ATTRIBUTES, CLDD_ATTRIBUTES, DT00_ATTRIB...
-    ## dbl (17): LATITUDE, LONGITUDE, ELEVATION, CDSD, CLDD, DT00, DT32, DX32, DX70...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
+suppressMessages({London <- read_csv(glue::glue("{Loc1}london_weather.csv"))})
+suppressMessages({UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")})
 list.files('Question2/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+s1 <- London_is_cold(alpha = 0.7)
+s1
 ```
 
-er4f f4ff4
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+
+the idea here was to point out in a visually pleasing manner
+
+``` r
+library(tidyverse)
+
+
+Loc1 <- "Question2/data/London/"
+suppressMessages({London <- read_csv(glue::glue("{Loc1}london_weather.csv"))})
+suppressMessages({UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")})
+list.files('Question2/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+s2 <- London_weather(alpha = 0.7)
+s2
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 # Question 3
 
 ``` r
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
-Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
+suppressMessages({Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))})
+suppressMessages({Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))})
+suppressMessages({metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))})
 ```
-
-    ## Rows: 50683 Columns: 19
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr  (7): track_id, name, artist, spotify_preview_url, spotify_id, tags, genre
-    ## dbl (12): year, duration_ms, danceability, energy, key, loudness, speechines...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
-Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
-```
-
-    ## Rows: 232 Columns: 15
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr   (2): name, album_name
-    ## dbl  (11): duration, popularity, acousticness, danceability, energy, instrum...
-    ## lgl   (1): explicit
-    ## date  (1): release_date
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
-metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
-```
-
-    ## Rows: 1468 Columns: 14
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr   (2): name, album
-    ## dbl  (11): duration_ms, popularity, danceability, energy, loudness, speechin...
-    ## date  (1): release_date
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 here is the barplot
 
 ``` r
 library(tidyverse)
 Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
-metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
-```
-
-    ## Rows: 1468 Columns: 14
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr   (2): name, album
-    ## dbl  (11): duration_ms, popularity, danceability, energy, loudness, speechin...
-    ## date  (1): release_date
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
+suppressMessages({metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))})
 list.files('Question3/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 f <- geom_bar1(alpha = 0.7, fig.width=6, fig.height= 20)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png) The
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) The
 following is found here
 
 # Question 4
 
 ``` r
 Loc3 <- "Question4/data/netflix/"
-credit<- read_csv(glue::glue("{Loc3}credits.csv"))
-```
+suppressMessages({credit<- read_csv(glue::glue("{Loc3}credits.csv"))})
+suppressMessages({titles <- read_csv(glue::glue("{Loc3}titles.csv"))})
 
-    ## Rows: 77213 Columns: 5
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (4): id, name, character, role
-    ## dbl (1): person_id
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
-titles <- read_csv(glue::glue("{Loc3}titles.csv"))
-```
-
-    ## Rows: 5806 Columns: 15
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (8): id, title, type, description, age_certification, genres, production...
-    ## dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 m <- Movie_vs_series(alpha = 0.7,fig.width=6, fig.height=4)
 m
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 This is why the following
 
 ``` r
 Loc3 <- "Question4/data/netflix/"
-credit<- read_csv(glue::glue("{Loc3}credits.csv"))
-```
-
-    ## Rows: 77213 Columns: 5
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (4): id, name, character, role
-    ## dbl (1): person_id
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
-titles <- read_csv(glue::glue("{Loc3}titles.csv"))
-```
-
-    ## Rows: 5806 Columns: 15
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (8): id, title, type, description, age_certification, genres, production...
-    ## dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
+suppressMessages({credit<- read_csv(glue::glue("{Loc3}credits.csv"))})
+suppressMessages({titles <- read_csv(glue::glue("{Loc3}titles.csv"))})
 list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 m2 <- table_of_extremes()
@@ -371,56 +232,31 @@ ultimately decide what to put more focus on.
 # Question 5
 
 ``` r
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc4 <- "Question5/data/googleplay/"
-User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
-google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
+suppressMessages({User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))})
+suppressMessages({google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))})
 ```
 
 First I made use of Geom_col in order to extract the most profitable
 apps from different categories
 
 ``` r
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc4 <- "Question5/data/googleplay/"
-User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
-```
+suppressMessages({User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))})
+suppressMessages({google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))})
 
-    ## Rows: 64295 Columns: 5
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (3): App, Translated_Review, Sentiment
-    ## dbl (2): Sentiment_Polarity, Sentiment_Subjectivity
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
-google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
-```
-
-    ## Rows: 10054 Columns: 13
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (11): App, Category, Size, Installs, Type, Price, Content Rating, Genres...
-    ## dbl  (2): Rating, Reviews
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 g <- profitability(alpha = 0.7)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-11-1.png) Here I
+![](README_files/figure-markdown_github/unnamed-chunk-12-1.png) Here I
 made use of the geom_col function to look at the most profitable
 categories of apps.
 

@@ -5,7 +5,7 @@ output:
 ---
 
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 
 rm(list = ls()) # Clean your environment:
 gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
@@ -15,7 +15,6 @@ library(tidyverse)
 # Question 1
 
 ```{r, warning=FALSE}
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
@@ -33,11 +32,10 @@ With regards to see differing trends between Africa and other countries
 
 
 ```{r, warning=FALSE}
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 Loc <- "Question1/data/Covid/"
-Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
+suppressMessages({Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))})
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 l1 <- top2_bottom2()
@@ -51,7 +49,7 @@ if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 Loc <- "Question1/data/Covid/"
-Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
+suppressMessages({Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))})
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 l2 <- Poverty_rates(alpha = 0.7)
@@ -63,32 +61,50 @@ The following was done using the results from the above table and simply graphin
 # Question 2
 ```{r, warning=FALSE}
 
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc1 <- "Question2/data/London/"
-London <- read_csv(glue::glue("{Loc1}london_weather.csv"))
-UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")
+suppressMessages({London <- read_csv(glue::glue("{Loc1}london_weather.csv"))})
+suppressMessages({UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")})
 list.files('Question2/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
+s1 <- London_is_cold(alpha = 0.7)
+s1
 
 ```
-er4f
-f4ff4
+
+the idea here was to point out in a visually pleasing manner 
+
+
+```{r}
+library(tidyverse)
+
+
+Loc1 <- "Question2/data/London/"
+suppressMessages({London <- read_csv(glue::glue("{Loc1}london_weather.csv"))})
+suppressMessages({UKMonthly_Detailed <- read_csv("~/21641412_Practical/Question2/data/London/UKMonthly_Detailed.csv")})
+list.files('Question2/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+s2 <- London_weather(alpha = 0.7)
+s2
+
+```
+
+
+
 
 
 
 # Question 3
 ```{r, warning=FALSE}
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
-Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
-Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
-metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+suppressMessages({Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))})
+suppressMessages({Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))})
+suppressMessages({metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))})
 
 
 ```
@@ -99,7 +115,7 @@ here is the barplot
 ```{r, warning=FALSE}
 library(tidyverse)
 Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
-metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+suppressMessages({metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))})
 list.files('Question3/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 f <- geom_bar1(alpha = 0.7, fig.width=6, fig.height= 20)
 ```
@@ -111,8 +127,8 @@ here
 # Question 4
 ```{r, warning=FALSE}
 Loc3 <- "Question4/data/netflix/"
-credit<- read_csv(glue::glue("{Loc3}credits.csv"))
-titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+suppressMessages({credit<- read_csv(glue::glue("{Loc3}credits.csv"))})
+suppressMessages({titles <- read_csv(glue::glue("{Loc3}titles.csv"))})
 
 list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
@@ -125,8 +141,8 @@ This is why the following
 
 ```{r}
 Loc3 <- "Question4/data/netflix/"
-credit<- read_csv(glue::glue("{Loc3}credits.csv"))
-titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+suppressMessages({credit<- read_csv(glue::glue("{Loc3}credits.csv"))})
+suppressMessages({titles <- read_csv(glue::glue("{Loc3}titles.csv"))})
 list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 m2 <- table_of_extremes()
@@ -140,25 +156,23 @@ Future analysis to be done could be to weigh how this obvious pro for Shows rela
 # Question 5
 
 ```{r, eval=F, warning=FALSE}
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc4 <- "Question5/data/googleplay/"
-User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
-google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
+suppressMessages({User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))})
+suppressMessages({google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))})
 ```
 
 First I made use of Geom_col in order to extract the most profitable apps from different categories
 
 ```{r, warning=FALSE}
-if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
 
 Loc4 <- "Question5/data/googleplay/"
-User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
-google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
+suppressMessages({User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))})
+suppressMessages({google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))})
 
 list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
