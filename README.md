@@ -8,17 +8,56 @@ library(tidyverse)
 
 ``` r
 if(!require("tidyverse")) install.packages("tidyverse")
+```
+
+    ## Loading required package: tidyverse
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+
+    ## ✔ ggplot2 3.4.0     ✔ purrr   1.0.1
+    ## ✔ tibble  3.2.1     ✔ dplyr   1.1.2
+    ## ✔ tidyr   1.3.0     ✔ stringr 1.5.0
+    ## ✔ readr   2.1.4     ✔ forcats 0.5.1
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 library(tidyverse)
 
 
 Loc <- "Question1/data/Covid/"
 Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
+```
+
+    ## Rows: 194260 Columns: 67
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr   (4): iso_code, continent, location, tests_units
+    ## dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
+    ## date  (1): date
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 l <- line_bar(alpha = 0.8, size = 1,fig.width=6, fig.height=4)
 ```
 
-With regards to see differing trends between Africa and other countries
+    ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+    ## ℹ Please use `linewidth` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
+
+    ## `geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'
+
+![](README_files/figure-markdown_github/unnamed-chunk-2-1.png) With
+regards to see differing trends between Africa and other countries
 
 # Question 2
 
@@ -52,26 +91,11 @@ here is the barplot
 
 ``` r
 library(tidyverse)
-```
-
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-
-    ## ✔ ggplot2 3.4.0     ✔ purrr   1.0.1
-    ## ✔ tibble  3.2.1     ✔ dplyr   1.1.2
-    ## ✔ tidyr   1.3.0     ✔ stringr 1.5.0
-    ## ✔ readr   2.1.4     ✔ forcats 0.5.1
-
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
 Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
 metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
 ```
 
     ## Rows: 1468 Columns: 14
-
     ## ── Column specification ────────────────────────────────────────────────────────
     ## Delimiter: ","
     ## chr   (2): name, album
@@ -94,13 +118,38 @@ following is found here
 ``` r
 Loc3 <- "Question4/data/netflix/"
 credit<- read_csv(glue::glue("{Loc3}credits.csv"))
-titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+```
 
+    ## Rows: 77213 Columns: 5
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): id, name, character, role
+    ## dbl (1): person_id
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+```
+
+    ## Rows: 5806 Columns: 15
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (8): id, title, type, description, age_certification, genres, production...
+    ## dbl (7): release_year, runtime, seasons, imdb_score, imdb_votes, tmdb_popula...
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 m <- Movie_vs_series(alpha = 0.7,fig.width=6, fig.height=4)
 m
 ```
+
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 This is why the following
 

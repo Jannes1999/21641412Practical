@@ -14,7 +14,7 @@ library(tidyverse)
 
 # Question 1
 
-```{r, eval=F}
+```{r}
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
@@ -81,7 +81,7 @@ here
 
 
 # Question 4
-```{r, eval=F}
+```{r}
 Loc3 <- "Question4/data/netflix/"
 credit<- read_csv(glue::glue("{Loc3}credits.csv"))
 titles <- read_csv(glue::glue("{Loc3}titles.csv"))
