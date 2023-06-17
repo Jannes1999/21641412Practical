@@ -6,10 +6,10 @@ Cor_bubbles <- function(){
         summarize(correlation = cor(total_smokers, total_deaths, use = "pairwise.complete.obs"))
 
     print(Correlation_smoke)
+    Cor_bubbles()
 
+    Covid1 %>% group_by(location) %>%
+        summarize(female_smokers, total_deaths) %>% cor(female_smokers, total_deaths)
 }
 
-Cor_bubbles()
 
-Covid1 %>% group_by(location) %>%
-    summarize(female_smokers, total_deaths) %>% cor(female_smokers, total_deaths)

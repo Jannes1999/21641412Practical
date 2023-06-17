@@ -1,4 +1,4 @@
-line_bar <- function(alpha, size){
+line_bar <- function(alpha, size, fig.width=6, fig.height=4){
 library(ggplot2)
 Covid_non_na <- Covid1  %>% filter_at(vars(continent),all_vars(!is.na(.))) %>%  mutate(ratio_deaths_cases = (total_deaths_per_million/total_cases_per_million)*100) %>%
     group_by(continent, ratio_deaths_cases) %>% mutate(date = date, mean_ratio_deaths_cases = mean(ratio_deaths_cases)) %>% ungroup()

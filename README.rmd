@@ -23,8 +23,8 @@ Loc <- "Question1/data/Covid/"
 Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
-l <- line_bar(alpha = 0.8, size = 1)
-l
+l <- line_bar(alpha = 0.8, size = 1,fig.width=6, fig.height=4)
+
 ```
 With regards to see differing trends between Africa and other countries 
 
@@ -61,16 +61,18 @@ Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
 Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
 metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
 
-f <- geom_bar1(alpha = 0.7)
-
 
 ```
 
 
 here is the barplot
 
-```{r,fig.width=6,fig.height=4}
-
+```{r, warning=FALSE}
+library(tidyverse)
+Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
+metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+list.files('Question3/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+f <- geom_bar1(alpha = 0.7, fig.width=6, fig.height=4)
 ```
 The following is found 
 here

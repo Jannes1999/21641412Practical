@@ -15,8 +15,7 @@ Loc <- "Question1/data/Covid/"
 Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
-l <- line_bar(alpha = 0.8, size = 1)
-l
+l <- line_bar(alpha = 0.8, size = 1,fig.width=6, fig.height=4)
 ```
 
 With regards to see differing trends between Africa and other countries
@@ -47,13 +46,48 @@ Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
 Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
 Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
 metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
-
-f <- geom_bar1(alpha = 0.7)
 ```
 
 here is the barplot
 
-The following is found here
+``` r
+library(tidyverse)
+```
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+
+    ## ✔ ggplot2 3.4.0     ✔ purrr   1.0.1
+    ## ✔ tibble  3.2.1     ✔ dplyr   1.1.2
+    ## ✔ tidyr   1.3.0     ✔ stringr 1.5.0
+    ## ✔ readr   2.1.4     ✔ forcats 0.5.1
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
+Loc2 <- "Question3/data/Coldplay_vs_Metallica/"
+metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+```
+
+    ## Rows: 1468 Columns: 14
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr   (2): name, album
+    ## dbl  (11): duration_ms, popularity, danceability, energy, loudness, speechin...
+    ## date  (1): release_date
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+list.files('Question3/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+f <- geom_bar1(alpha = 0.7, fig.width=6, fig.height=4)
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png) The
+following is found here
 
 # Question 4
 
@@ -82,22 +116,6 @@ apps from different categories
 
 ``` r
 if(!require("tidyverse")) install.packages("tidyverse")
-```
-
-    ## Loading required package: tidyverse
-
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-
-    ## ✔ ggplot2 3.4.0     ✔ purrr   1.0.1
-    ## ✔ tibble  3.2.1     ✔ dplyr   1.1.2
-    ## ✔ tidyr   1.3.0     ✔ stringr 1.5.0
-    ## ✔ readr   2.1.4     ✔ forcats 0.5.1
-
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
 library(tidyverse)
 
 
@@ -106,7 +124,6 @@ User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
 ```
 
     ## Rows: 64295 Columns: 5
-
     ## ── Column specification ────────────────────────────────────────────────────────
     ## Delimiter: ","
     ## chr (3): App, Translated_Review, Sentiment
