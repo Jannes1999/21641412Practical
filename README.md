@@ -40,7 +40,11 @@ l <- line_bar(alpha = 0.8, size = 1,fig.width=6, fig.height=4)
 
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
-With regards to see differing trends between Africa and other countries
+Here the idea was to see whether or not there was a difference between
+the ratio of deaths to cases (wrt Covid) in different regions of the
+world (especially Africa). Not much is revealed through the data except
+for the fact that Africa seemed to remain at constant level which
+differs from the other regions.
 
 ``` r
 library(tidyverse)
@@ -76,11 +80,13 @@ l1 <- top2_bottom2()
     ## 3 Madagascar                          77.6
     ## 4 Democratic Republic of Congo        77.1
 
-Now we now that Jordan and Kazakhstan on average have the least amount
-of poverty, where as the Democratic republic of Congo and Madagascar
-exhibit the highest level of poverty. Given this we can see how poverty
-relates to the number of covid deaths. Perhaps surprisingly Jordan are
-one of the countr
+Above through some wrangling I wanted to understand how something like
+poverty levels (vastly different from country to country) could have
+different effect on the deaths from covid. Now we now that Jordan and
+Kazakhstan on average have the least amount of poverty, where as the
+Democratic republic of Congo and Madagascar exhibit the highest level of
+poverty. Given this we can see how poverty relates to the number of
+covid deaths. Perhaps surprisingly Jordan are one of the countr
 
 ``` r
 if(!require("tidyverse")) install.packages("tidyverse")
@@ -143,7 +149,11 @@ s1
 
 ![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
-the idea here was to point out in a visually pleasing manner
+the idea here was to point out in a visually pleasing manner how the
+mean temperatures from London varies through the months and the years,
+however some technical difficulties was encountered…..
+
+the graph that follows does a similar job in a less appealing way.
 
 ``` r
 library(tidyverse)
@@ -158,7 +168,11 @@ s2 <- London_weather(alpha = 0.7)
 s2
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png) The mean
+temperatures in London over the years has not changed that much and
+considering the fact that its mean temp remains around 10 suggest in and
+of itself that no thinking person (from SA) will particularly enjoy the
+weather.
 
 # Question 3
 
@@ -183,7 +197,10 @@ f <- geom_bar1(alpha = 0.7, fig.width=6, fig.height= 20)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) The
-following is found here
+following boxplot was created to see the popularity of Metallica’s
+albums. First, it was required to filter out those albums that are
+reproduced and then those that were live albums. The remaining albums
+produces the boxplot from above.
 
 # Question 4
 
@@ -198,9 +215,12 @@ m <- Movie_vs_series(alpha = 0.7,fig.width=6, fig.height=4)
 m
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
-
-This is why the following
+![](README_files/figure-markdown_github/unnamed-chunk-9-1.png) To create
+the graphic above I simply summarised the data as it relates to the two
+variables at hand (movies and Series/Shows). Then the average Imdb
+rating was used to see whether its smarter to invest into movies or
+series (if quality is what you are after). The results suggest that
+series has a better average rating compared to movies.
 
 ``` r
 Loc3 <- "Question4/data/netflix/"
@@ -238,27 +258,21 @@ library(tidyverse)
 Loc4 <- "Question5/data/googleplay/"
 suppressMessages({User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))})
 suppressMessages({google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))})
-```
-
-First I made use of Geom_col in order to extract the most profitable
-apps from different categories
-
-``` r
-library(tidyverse)
-
-
-Loc4 <- "Question5/data/googleplay/"
-suppressMessages({User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))})
-suppressMessages({google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))})
 
 list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 g <- profitability(alpha = 0.7)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-12-1.png) Here I
+![](README_files/figure-markdown_github/unnamed-chunk-11-1.png) Here I
 made use of the geom_col function to look at the most profitable
-categories of apps.
+categories of apps. In this case (looking at profitability) I only
+looked at apps that were paid for (not free ones). This was done through
+filtering the data for only the paid apps. Then looking at each category
+to see whether any stands out. From the figure its clear that Family,
+Finance, Lifestyle and medical are the categories of apps that garners
+the most profits. These tend to be the apps that are typically not free,
+but they are also typically the apps that consumers would pay for.
 
 ``` r
 list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
@@ -282,4 +296,7 @@ f <- size_summary(ignore.case = TRUE)
 
 Here we looked at the average size, minimum size and maximum size of the
 apps given for the given categories. They are also rank ordered from
-highest to lowest average size
+highest to lowest average size. This table was created through focussing
+on the categories and the size variables. Through some wrangling and
+summarising this is the end result. As expected the size of gaming,
+family, Travel & local and Sports are the biggest.
