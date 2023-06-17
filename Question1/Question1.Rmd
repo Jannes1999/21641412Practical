@@ -408,3 +408,13 @@ Some appendix information here
 
 ## Appendix B {-}
 
+
+# Question 1 
+
+```{r}
+Loc <- "/Users/jan1999/21641412_Practical/data/Covid/"
+Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
+```
+
+
+

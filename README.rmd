@@ -4,21 +4,80 @@ output:
     variant: markdown_github
 ---
 
-# Purpose
 
-Purpose of this work folder.
-
-Ideally store a minimum working example data set in data folder.
-
-Add binary files in bin, and closed R functions in code. Human Readable settings files (e.g. csv) should be placed in settings/
-
-
-```{r}
+```{r,}
 
 rm(list = ls()) # Clean your environment:
 gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
 library(tidyverse)
 list.files('code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 ```
+
+# Question 1
+
+```{r, echo=FALSE}
+Loc <- "data/Covid/"
+Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
+list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+```
+
+
+
+crfr
+
+
+# Question 2
+```{r}
+Loc1 <- "/Users/jan1999/21641412_Practical/data/London/"
+London <- read_csv(glue::glue("{Loc1}london_weather.csv"))
+UKMonthly_Detailed <- read_csv("~/21641412_Practical/data/London/UKMonthly_Detailed.csv")
+```
+er4f
+f4ff4
+# Question 3
+```{r}
+Loc2 <- "data/Coldplay_vs_Metallica/"
+Spotify_info <- read_csv(glue::glue("{Loc2}Broader_Spotify_Info.csv"))
+Coldplay <- read_csv(glue::glue("{Loc2}Coldplay.csv"))
+metallica <- read_csv(glue::glue("{Loc2}metallica.csv"))
+
+```
+
+
+here is the barplot
+
+```{r,fig.width=6,fig.height=4}
+
+```
+The following is found 
+here
+
+
+
+# Question 4
+```{r}
+Loc3 <- "data/netflix/"
+credit<- read_csv(glue::glue("{Loc3}credits.csv"))
+titles <- read_csv(glue::glue("{Loc3}titles.csv"))
+```
+
+This is why the following 
+
+
+
+# Question 5
+
+```{r}
+Loc4 <- "data/googleplay/"
+User_reviews<- read_csv(glue::glue("{Loc4}googleplaystore_user_reviews.csv"))
+google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
+```
+
+
+
+
+
+
+
 
 

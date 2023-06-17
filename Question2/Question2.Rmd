@@ -408,3 +408,15 @@ Some appendix information here
 
 ## Appendix B {-}
 
+# Question 2
+
+```{r, echo=FALSE}
+Loc <- "/Users/jan1999/21641412_Practical/data/London/"
+London <- read_csv(glue::glue("{Loc}london_weather.csv"))
+Central_England <- read_csv(glue::glue("{Loc}UKMontly_Detailed.csv"))
+UKMonthly_Detailed <- read_csv("~/21641412_Practical/data/London/UKMonthly_Detailed.csv")
+```
+
+
+
+
