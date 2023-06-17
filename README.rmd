@@ -88,7 +88,7 @@ titles <- read_csv(glue::glue("{Loc3}titles.csv"))
 
 list.files('Question4/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
-m <- Movie_vs_series(alpha = 0.7)
+m <- Movie_vs_series(alpha = 0.7,fig.width=6, fig.height=4)
 m
 
 ```
