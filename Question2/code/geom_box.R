@@ -17,4 +17,4 @@ geom_box <- function(alpha = 0.7){
     print(g)
 
 }
-geom_box(alpha = 0.7)
+
