@@ -22,12 +22,15 @@ ICU <- function(){
         arrange(total_increase)
 
     print(highest_increase$location)
-}
 
-Increased_hospital_beds <- Covid1 %>%
-    group_by(location) %>%
-    mutate(hospital_beds_per_thousand_increase = hospital_beds_per_thousand - lag(hospital_beds_per_thousand))
-Increased_hospital_beds
+    Increased_hospital_beds <- Covid1 %>%
+        group_by(location) %>%
+        mutate(hospital_beds_per_thousand_increase = hospital_beds_per_thousand - lag(hospital_beds_per_thousand))
+    Increased_hospital_beds
+
+    }
+
+
 
 
 

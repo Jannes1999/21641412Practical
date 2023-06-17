@@ -6,7 +6,7 @@ library(tidyverse)
 
 # Question 1
 
-crfr
+With regards to see differing trends between Africa and other countries
 
 # Question 2
 
@@ -119,10 +119,30 @@ list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .
 g <- profitability(alpha = 0.7)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) Here I
+made use of the geom_col function to look at the most profitable
+categories of apps.
 
 ``` r
-g
+list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+f <- size_summary(ignore.case = TRUE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-2.png)
+    ## # A tibble: 10 × 4
+    ##    Category            avg_Size min_Size  max_Size
+    ##    <chr>                  <dbl>    <dbl>     <dbl>
+    ##  1 GAME               41188807.      1.1 100000000
+    ##  2 FAMILY             25976275.      1   100000000
+    ##  3 TRAVEL_AND_LOCAL   23028605.      1.9  90000000
+    ##  4 SPORTS             22582327.      1.1 100000000
+    ##  5 ENTERTAINMENT      21492959.      3.3  78000000
+    ##  6 PARENTING          20111114.      1.5  98000000
+    ##  7 FOOD_AND_DRINK     19377779.      1.7  76000000
+    ##  8 HEALTH_AND_FITNESS 19239500.      1.2 100000000
+    ##  9 EDUCATION          18066837.      1.2  97000000
+    ## 10 AUTO_AND_VEHICLES  17921149.      1.1  97000000
+
+Here we looked at the average size, minimum size and maximum size of the
+apps given for the given categories. They are also rank ordered from
+highest to lowest average size

@@ -22,11 +22,13 @@ library(tidyverse)
 Loc <- "Question1/data/Covid/"
 Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
+
+l <- line_bar(alpha = 0.8, size = 1)
 ```
+With regards to see differing trends between Africa and other countries 
 
 
 
-crfr
 
 
 # Question 2
@@ -94,7 +96,7 @@ google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
 
 First I made use of Geom_col in order to extract the most profitable apps from different categories
 
-```{r}
+```{r, warning=FALSE}
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
@@ -106,13 +108,18 @@ google_playstore <- read_csv(glue::glue("{Loc4}googleplaystore.csv"))
 list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
 g <- profitability(alpha = 0.7)
-g
 
 ```
+Here I made use of the geom_col function to look at the most profitable categories of apps. 
 
 
+```{r, warning=FALSE}
+list.files('Question5/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 
+f <- size_summary(ignore.case = TRUE)
 
+```
+Here we looked at the average size, minimum size and maximum size of the apps given for the given categories. They are also rank ordered from highest to lowest average size 
 
 
 
