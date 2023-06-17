@@ -28,21 +28,7 @@ library(tidyverse)
 
 
 Loc <- "Question1/data/Covid/"
-Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))
-```
-
-    ## Rows: 194260 Columns: 67
-
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr   (4): iso_code, continent, location, tests_units
-    ## dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
-    ## date  (1): date
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
+suppressMessages({Covid1 <- read_csv(glue::glue("{Loc}owid-covid-data.csv"))})
 list.files('Question1/code/', full.names = T, recursive = T) %>% .[grepl('.R', .)] %>% as.list() %>% walk(~source(.))
 ```
 
